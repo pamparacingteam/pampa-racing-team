@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pampa Racing Team</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box} body{background:#060B16;color:#fff;font-family:Inter,system-ui,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 5%;position:fixed;top:0;left:0;right:0;background:rgba(6,11,22,.9);z-index:10}
+header b{letter-spacing:2px} header b span{color:#2EA5FF}
+nav a{color:#CBD5E1;text-decoration:none;margin-left:22px;font-size:13px;letter-spacing:1px}
+.hero{min-height:100vh;display:flex;align-items:flex-end;background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80') center/cover;padding:120px 5% 60px}
+.hero h1{font-size:clamp(38px,7vw,84px);line-height:.95} .hero h1 span{color:#2EA5FF}
+.hero p{color:#94A3B8;max-width:560px;margin:18px 0 24px}
+.btn{display:inline-block;background:#2EA5FF;color:#fff;padding:14px 26px;text-decoration:none;font-weight:700;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
+section{padding:70px 5%} .kicker{color:#2EA5FF;letter-spacing:3px;font-size:12px} h2{font-size:clamp(28px,4vw,48px);margin:10px 0 18px}
+.bar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0} .bar div{background:#0B1526;padding:20px;border:1px solid #1E3A5F} .bar b{font-size:28px;color:#2EA5FF}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .card{height:380px;border:1px solid #2EA5FF;background-size:cover;background-position:center;display:flex;align-items:flex-end} .card div{background:linear-gradient(transparent,rgba(0,0,0,.9));padding:20px;width:100%}
+.pilotos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .piloto{background:#0B1526;border:1px solid #1E3A5F;padding:16px} .piloto img{width:100%;height:180px;object-fit:cover}
+.filo{background:url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1600&q=80') center/cover;padding:90px 5%}
+.partners{background:#071A33;text-align:center} .sponsors{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px} .sponsors span{background:#0B1526;padding:16px 24px;border:1px solid #1E3A5F}
+footer{padding:30px 5%;text-align:center;color:#94A3B8}
+@media(max-width:800px){.grid,.pilotos,.bar{grid-template-columns:1fr} nav{display:none}}
+</style></head>
+<body>
+<header><b>PAMPA <span>RACING TEAM</span></b><nav><a href="#equipo">EQUIPO</a><a href="#pilotos">PILOTOS</a><a href="#calendario">CALENDARIO</a><a href="#partners">PARTNERS</a></nav><a class="btn" href="/admin">EDITAR PÁGINA</a></header>
+<div class="hero"><div><div class="kicker">EQUIPO DE SIMRACING • ARGENTINA</div><h1 id="heroTitle">Competimos<br><span>más allá de la pista</span></h1><p id="heroSub">Pampa Racing Team - Equipo de simracing argentino.</p><a class="btn" href="#equipo">CONOCÉ EL EQUIPO</a></div></div>
+<section id="equipo"><div class="kicker">EL EQUIPO</div><h2>13 pilotos, una familia</h2><div class="bar"><div><b id="sPilotos">13</b><br>Pilotos activos</div><div><b id="sCamp">3</b><br>Campeonatos en curso</div><div><b id="sPodios">72</b><br>Podios</div><div><b id="sUltimo">Interlagos</b><br>Último resultado</div></div>
+<div class="grid"><div class="card" style="background-image:url('https://images.unsplash.com/photo-1542362567-b07e54358753?w=900&q=80')"><div><h3>Nuestro Equipo</h3><p>Historia, valores y objetivos</p></div></div><div class="card" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900&q=80')"><div><h3>Competencias</h3><p>Calendario, inscripciones y resultados</p></div></div><div class="card" style="background-image:url('https://images.unsplash.com/photo-1493238792000-8113da705763?w=900&q=80')"><div><h3>Nuestros Pilotos</h3><p>Talento, estadísticas y trayectoria</p></div></div></div></section>
+<section id="pilotos"><div class="kicker">PILOTOS</div><h2>Nuestros Pilotos</h2><div class="pilotos" id="pilotosGrid"></div></section>
+<section class="filo"><div class="kicker">FILOSOFÍA</div><h2 id="filoText">Disciplina en cada vuelta.<br>Pasión en cada detalle.</h2><p>Más que velocidad: trabajo en equipo, constancia y respeto.</p></section>
+<section id="partners" class="partners"><div class="kicker">PARTNERS</div><h2>Tu marca en cada curva</h2><p>Más que un equipo, una familia.</p><a class="btn" href="#partners">SUMATE COMO PARTNER</a><div class="sponsors" id="sponsors"></div></section>
+<footer>Pampa Racing Team © 2026 • <a href="/admin" style="color:#2EA5FF">Ingresar para editar</a></footer>
+<script>
+fetch('/content/site.json').then(r=>r.json()).then(d=>{
+ document.getElementById('heroTitle').innerHTML=d.hero_title.replace('más allá','<span>más allá</span>');
+ document.getElementById('heroSub').textContent=d.hero_subtitle;
+ document.getElementById('sPilotos').textContent=d.stats.pilotos;
+ document.getElementById('sCamp').textContent=d.stats.campeonatos;
+ document.getElementById('sPodios').textContent=d.stats.podios;
+ document.getElementById('sUltimo').textContent=d.stats.ultimo_resultado;
+ document.getElementById('filoText').textContent=d.filosofia;
+ document.getElementById('pilotosGrid').innerHTML=d.pilotos.map(p=>`<div class="piloto"><img src="${p.foto}"><h3>#${p.numero} ${p.nombre}</h3><p>${p.categoria}</p></div>`).join('');
+ document.getElementById('sponsors').innerHTML=d.partners.map(p=>`<span>${p.nombre}</span>`).join('');
+}).catch(()=>{});
+</script></body></html>
