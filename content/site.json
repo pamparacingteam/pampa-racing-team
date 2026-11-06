@@ -1,0 +1,43 @@
+{
+  "hero_title": "Competimos más allá de la pista",
+  "hero_subtitle": "Pampa Racing Team - Equipo de simracing argentino. Disciplina, pasión y familia en cada vuelta.",
+  "stats": {
+    "pilotos": 13,
+    "campeonatos": 3,
+    "podios": 72,
+    "ultimo_resultado": "Interlagos - Doble P1 + P7"
+  },
+  "pilotos": [
+    {
+      "nombre": "Piloto 1",
+      "numero": "77",
+      "categoria": "Pro",
+      "foto": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80"
+    },
+    {
+      "nombre": "Piloto 2",
+      "numero": "72",
+      "categoria": "Pro",
+      "foto": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80"
+    },
+    {
+      "nombre": "Piloto 3",
+      "numero": "11",
+      "categoria": "Am",
+      "foto": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80"
+    }
+  ],
+  "partners": [
+    {
+      "nombre": "Sponsor 1"
+    },
+    {
+      "nombre": "Sponsor 2"
+    },
+    {
+      "nombre": "Sponsor 3"
+    }
+  ],
+  "filosofia": "Disciplina en cada vuelta. Pasión en cada detalle.",
+  "contacto": "Contacto para sumarte como partner"
+}

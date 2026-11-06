@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+collections:
+  - name: "site"
+    label: "Contenido de la página"
+    files:
+      - name: "general"
+        label: "Textos generales"
+        file: "content/site.json"
+        fields:
+          - {label: "Título Hero", name: "hero_title", widget: "string"}
+          - {label: "Subtítulo Hero", name: "hero_subtitle", widget: "text"}
+          - {label: "Filosofía", name: "filosofia", widget: "text"}
+          - label: "Estadísticas"
+            name: "stats"
+            widget: "object"
+            fields:
+              - {label: "Pilotos", name: "pilotos", widget: "number"}
+              - {label: "Campeonatos", name: "campeonatos", widget: "number"}
+              - {label: "Podios", name: "podios", widget: "number"}
+              - {label: "Último resultado", name: "ultimo_resultado", widget: "string"}
+          - label: "Pilotos"
+            name: "pilotos"
+            widget: "list"
+            fields:
+              - {label: "Nombre", name: "nombre", widget: "string"}
+              - {label: "Número", name: "numero", widget: "string"}
+              - {label: "Categoría", name: "categoria", widget: "string"}
+              - {label: "Foto", name: "foto", widget: "image"}
+          - label: "Partners / Sponsors"
+            name: "partners"
+            widget: "list"
+            fields:
+              - {label: "Nombre", name: "nombre", widget: "string"}
+          - {label: "Contacto", name: "contacto", widget: "string"}
